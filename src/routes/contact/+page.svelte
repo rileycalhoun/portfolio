@@ -1,15 +1,22 @@
 <script lang="ts">
+	import { MetaTags } from 'svelte-meta-tags';
+
+	import { browser } from '$app/environment';
 	import Header from '$lib/components/Header.svelte';
 	import Form from '$lib/components/contact/Form.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { onMount, onDestroy } from 'svelte';
 
 	onMount(() => {
-		document.body.classList.add('no-scroll');
+		if (browser) {
+			document.body.classList.add('no-scroll');
+		}
 	});
 
 	onDestroy(() => {
-		document.body.classList.remove('no-scroll');
+		if (browser) {
+			document.body.classList.remove('no-scroll');
+		}
 	});
 </script>
 
@@ -20,6 +27,11 @@
 	</div>
 	<Footer />
 </div>
+
+<MetaTags
+	title="Contact | Riley Calhoun"
+	description="The contact page of Riley Calhoun's portfolio website."
+/>
 
 <style>
 	#container {

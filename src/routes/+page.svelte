@@ -1,6 +1,8 @@
 <script lang="ts">
 	export const prerender = true;
 
+    import { MetaTags } from 'svelte-meta-tags';
+
 	import Header from '$lib/components/Header.svelte';
 	import Summary from '$lib/components/portfolio/Summary.svelte';
 	import TechnicalSkills from '$lib/components/portfolio/TechnicalSkills.svelte';
@@ -22,10 +24,12 @@
 </div>
 <Footer />
 
+<MetaTags 
+    title="Portfolio | Riley Calhoun"
+    description="Riley Calhoun's portfolio website."
+/>
+
 <style>
-	body {
-		overflow-y: hidden;
-	}
 
 	/* Add styles here, for example: */
 	#flex-box {
