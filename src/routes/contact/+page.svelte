@@ -2,30 +2,40 @@
 	import Header from '$lib/components/Header.svelte';
 	import Form from '$lib/components/contact/Form.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import { onMount, onDestroy } from 'svelte';
+
+	onMount(() => {
+		document.body.classList.add('no-scroll');
+	});
+
+	onDestroy(() => {
+		document.body.classList.remove('no-scroll');
+	});
 </script>
 
-<html lang="en">
-	<head>
-		<title>Contact | Riley Calhoun</title>
-		<meta name="description" content="Riley Calhoun's portfolio." />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	</head>
+<div id="container">
 	<Header />
-	<body>
+	<div id="content">
 		<Form />
-	</body>
-    <Footer />
-</html>
+	</div>
+	<Footer />
+</div>
 
 <style>
-	html, body {
-		margin: 0px;
-		padding: 0px;
+	#container {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
 	}
 
-	body {
-		padding-top: calc(2.5rem);
-        min-height: 100vh;
-        overflow-y: hidden;
+	#content {
+		flex: 1;
+		padding: 2rem;
+	}
+
+	/* This is a global style that will be applied to the body */
+	/* when this component is mounted */
+	:global(body.no-scroll) {
+		overflow-y: hidden;
 	}
 </style>
